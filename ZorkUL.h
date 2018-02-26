@@ -13,6 +13,7 @@ class ZorkUL {
 private:
 	Parser parser;
 	Room *currentRoom;
+    Room *rooms[];
 	void createRooms();
 	void printWelcome();
 	bool processCommand(Command command);
@@ -25,6 +26,9 @@ public:
 	ZorkUL();
 	void play();
 	string go(string direction);
+    string getCurrentRoom();
+    string teleport();
+    string elevatorDeath();
 };
 
 #endif /*ZORKUL_H_*/
