@@ -3,12 +3,6 @@
 using namespace std;
 #include "ZorkUL.h"
 
-int main(int argc, char argv[]) {
-	ZorkUL temp;
-	temp.play();
-	return 0;
-}
-
 ZorkUL::ZorkUL() {
 	createRooms();
 }
@@ -42,6 +36,16 @@ void ZorkUL::createRooms()  {
     i->setExits(NULL, d, NULL, NULL);
 
         currentRoom = a;
+
+    rooms[0] = a;
+    rooms[1] = b;
+    rooms[2] = c;
+    rooms[3] = d;
+    rooms[4] = e;
+    rooms[5] = f;
+    rooms[6] = g;
+    rooms[7] = h;
+    rooms[8] = i;
 }
 
 /**
@@ -53,16 +57,6 @@ void ZorkUL::play() {
 	// Enter the main command loop.  Here we repeatedly read commands and
 	// execute them until the ZorkUL game is over.
 
-	bool finished = false;
-	while (!finished) {
-		// Create pointer to command and give it a command.
-		Command* command = parser.getCommand();
-		// Pass dereferenced command and check for end of game.
-		finished = processCommand(*command);
-		// Free the memory allocated by "parser.getCommand()"
-		//   with ("return new Command(...)")
-		delete command;
-	}
 	cout << endl;
 	cout << "end" << endl;
 }
@@ -98,7 +92,7 @@ bool ZorkUL::processCommand(Command command) {
 		cout << "         |         " << endl;
 		cout << "         |         " << endl;
 		cout << "[i] --- [d] --- [e]" << endl;
-		}
+    }
 
 	else if (commandWord.compare("go") == 0)
 		goRoom(command);
@@ -184,4 +178,35 @@ string ZorkUL::go(string direction) {
 		currentRoom = nextRoom;
 		return currentRoom->longDescription();
 	}
+}
+
+string ZorkUL::getCurrentRoom(){
+    return currentRoom->longDescription();
+}
+
+string ZorkUL::teleport(){
+    srand(time(0));
+    int randNum;
+    randNum = rand()%9;
+    currentRoom = rooms[randNum];
+    return currentRoom->longDescription();
+}
+
+string ZorkUL::elevatorDeath(){
+    srand(time(0));
+    int randNum;
+    randNum = rand()%3;
+    string result;
+
+    if(randNum == 0){
+        result = "It opens";
+    }
+    else if(randNum == 1){
+        result = "It doesn't open";
+    }
+    else{
+        result = " It opens but there is smoke in here";
+    }
+
+    return result;
 }
