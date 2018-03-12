@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "ZorkUL.h"
+#include <QMediaPlayer>
 
 namespace Ui {
 class MainWindow;
@@ -17,15 +18,17 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_windowBtn_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_elevatorBtn_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_stairsBtn_clicked();
 
 private:
     Ui::MainWindow *ui;
     ZorkUL *zork;
+    QMediaPlayer *breakWindow;
+    QMediaPlayer *falling;
 };
 
 #endif // MAINWINDOW_H

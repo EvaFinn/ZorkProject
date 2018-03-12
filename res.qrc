@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/sounds">
+        <file>impact_glass_window_smash_005.mp3</file>
+        <file>falling.mp3</file>
+        <file>OH HONEY.mp3</file>
+    </qresource>
+</RCC>
