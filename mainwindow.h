@@ -24,11 +24,16 @@ private slots:
 
     void on_stairsBtn_clicked();
 
+    void on_radioButton_clicked();
+
+    void on_enterLiftBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
     ZorkUL *zork;
     QMediaPlayer *breakWindow;
     QMediaPlayer *falling;
+    QMediaPlayer *bell;
 };
 
 #endif // MAINWINDOW_H
