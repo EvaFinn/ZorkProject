@@ -9,5 +9,7 @@
         <file>open_elevator.png</file>
         <file>closed_elevator.png</file>
         <file>Gold_circle.svg.png</file>
+        <file>fire.jpg</file>
+        <file>firegif.gif</file>
     </qresource>
 </RCC>

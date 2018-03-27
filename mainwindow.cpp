@@ -19,6 +19,10 @@ MainWindow::MainWindow(QWidget *parent) :
     bell = new QMediaPlayer();
     bell->setMedia(QUrl("qrc:/sounds/bell.mp3"));
 
+//    movie = new QMovie("qrc:/images/firegif.gif");
+//    QLabel *processLabel = new QLabel(this);
+//    processLabel->setMovie(movie);
+
 //    this->connect(this->ui->upBtn, SIGNAL(clicked()), this,SLOT(on_upBtn_click()));
 //    this->connect(this->ui->downBtn, SIGNAL(clicked()), this,SLOT(on_downBtn_click()));
 }
@@ -33,6 +37,19 @@ void MainWindow::on_windowBtn_clicked()
     ui->stackedWidget->setCurrentIndex(1);
     breakWindow->play();
     falling->play();
+
+//    QGraphicsScene scene;
+//    QLabel *gif_anim = new QLabel();
+    QMovie *movie = new QMovie("qrc:/images/firegif.gif");
+    ui->fireLabel->setMovie(movie);
+    movie->start();
+    QGraphicsProxyWidget *proxy = scene.addWidget(ui->fireLabel);
+
+//    QLabel label;
+//    QMovie *movie = new QMovie("qrc:/images/firegif.gif");
+
+//    ui->fireLabel->setMovie(movie);
+//    movie->start();
 }
 
 void MainWindow::on_elevatorBtn_clicked()

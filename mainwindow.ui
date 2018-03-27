@@ -81,18 +81,66 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page_2">
-     <widget class="QLabel" name="windowDeathLabel">
+     <widget class="QFrame" name="frame_2">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>90</y>
-        <width>281</width>
-        <height>151</height>
+        <x>0</x>
+        <y>-1</y>
+        <width>741</width>
+        <height>441</height>
        </rect>
       </property>
-      <property name="text">
-       <string>You Died</string>
+      <property name="styleSheet">
+       <string notr="true">#frame_2 {
+	background : url(:/images/fire.jpg);
+	background-attachment: fixed;
+	background-repeat: norepeat;
+	background-color: rgb(211, 210, 204);
+	background-position: centre
+}</string>
       </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="windowDeathLabel">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>140</y>
+         <width>161</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#windowDeathLabel{
+	font-family : &quot;Times New Roman&quot;, Times, serif;
+	font-size: 40px;
+	font-weight: bold;
+	font-variant: small-caps;
+	color: black;
+	text-align: center;
+}</string>
+       </property>
+       <property name="text">
+        <string>You Died</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="fireLabel">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>240</y>
+         <width>201</width>
+         <height>201</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="page_3">

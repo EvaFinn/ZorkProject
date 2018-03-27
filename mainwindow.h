@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include "ZorkUL.h"
 #include <QMediaPlayer>
+#include <QRadialGradient>
+#include <QtCore>
+#include <QtGui>
+#include <QGraphicsScene>
 
 namespace Ui {
 class MainWindow;
@@ -49,6 +53,8 @@ private:
     QMediaPlayer *falling;
     QMediaPlayer *bell;
     int levelCount;
+    QGraphicsScene scene;
+//    QMovie *movie;
 };
 
 #endif // MAINWINDOW_H
