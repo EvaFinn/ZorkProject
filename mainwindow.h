@@ -28,12 +28,27 @@ private slots:
 
     void on_enterLiftBtn_clicked();
 
+    void on_restart_clicked();
+
+    void on_upBtn_clicked();
+
+    void on_downBtn_clicked();
+
+    void on_goBtn_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_leftBtn_clicked();
+
+    void on_rightBtn2_clicked();
+
 private:
     Ui::MainWindow *ui;
     ZorkUL *zork;
     QMediaPlayer *breakWindow;
     QMediaPlayer *falling;
     QMediaPlayer *bell;
+    int levelCount;
 };
 
 #endif // MAINWINDOW_H
