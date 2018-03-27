@@ -2,7 +2,7 @@
 
 using namespace std;
 #include "ZorkUL.h"
-#include <timeconv.h>
+#include <time.h>
 
 ZorkUL::ZorkUL() {
 	createRooms();
