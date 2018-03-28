@@ -38,18 +38,9 @@ void MainWindow::on_windowBtn_clicked()
     breakWindow->play();
     falling->play();
 
-//    QGraphicsScene scene;
-//    QLabel *gif_anim = new QLabel();
     QMovie *movie = new QMovie("qrc:/images/firegif.gif");
     ui->fireLabel->setMovie(movie);
     movie->start();
-    QGraphicsProxyWidget *proxy = scene.addWidget(ui->fireLabel);
-
-//    QLabel label;
-//    QMovie *movie = new QMovie("qrc:/images/firegif.gif");
-
-//    ui->fireLabel->setMovie(movie);
-//    movie->start();
 }
 
 void MainWindow::on_elevatorBtn_clicked()
