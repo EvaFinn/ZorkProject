@@ -40,11 +40,15 @@ private slots:
 
     void on_goBtn_clicked();
 
-    void on_pushButton_clicked();
+    void on_downStairsBtn_clicked();
 
     void on_leftBtn_clicked();
 
     void on_rightBtn2_clicked();
+
+    void on_rightBtn_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -53,6 +57,7 @@ private:
     QMediaPlayer *falling;
     QMediaPlayer *bell;
     int levelCount;
+    int value;
     QGraphicsScene scene;
 //    QMovie *movie;
 };

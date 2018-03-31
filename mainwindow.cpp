@@ -19,6 +19,9 @@ MainWindow::MainWindow(QWidget *parent) :
     bell = new QMediaPlayer();
     bell->setMedia(QUrl("qrc:/sounds/bell.mp3"));
 
+    ui->healthBar->setMaximum(0);
+    ui->healthBar->setMinimum(0);
+
 //    movie = new QMovie("qrc:/images/firegif.gif");
 //    QLabel *processLabel = new QLabel(this);
 //    processLabel->setMovie(movie);
@@ -99,9 +102,11 @@ void MainWindow::on_goBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
 }
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_downStairsBtn_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(4);
+    ui->stackedWidget->setCurrentIndex(7);
+    this->value=0;
+    ui->progressBar->setValue(value);
 }
 
 void MainWindow::on_leftBtn_clicked()
@@ -112,4 +117,15 @@ void MainWindow::on_leftBtn_clicked()
 void MainWindow::on_rightBtn2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
+}
+
+void MainWindow::on_rightBtn_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(6);
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    ui->progressBar->setValue(value);
+    value++;
 }
