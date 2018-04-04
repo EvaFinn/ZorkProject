@@ -6,6 +6,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->ui->healthBar->setValue(100);
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(TimerEvent()));
+    timer->start(10000); //set to 10 secs at the minute
 
     ui->stackedWidget->setCurrentIndex(0);
     zork = new ZorkUL();
@@ -50,6 +54,12 @@ void MainWindow::on_windowBtn_clicked()
 
 //    ui->fireLabel->setMovie(movie);
 //    movie->start();
+}
+void MainWindow::TimerEvent()
+{
+  int value = this->ui->healthBar->value();
+  this->ui->healthBar->setValue(value-1);//ony decreases by 1% at the minute
+  //maybe put destructor in here??
 }
 
 void MainWindow::on_elevatorBtn_clicked()
@@ -122,3 +132,5 @@ void MainWindow::on_rightBtn2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
 }
+
+//void QTimer::~QTimer()
