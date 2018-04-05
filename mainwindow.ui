@@ -33,7 +33,7 @@
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QWidget" name="layoutWidget">
@@ -381,14 +381,27 @@
      <widget class="QPushButton" name="downStairsBtn">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>263</y>
+        <x>390</x>
+        <y>260</y>
         <width>161</width>
         <height>51</height>
        </rect>
       </property>
       <property name="text">
        <string>Down Stairs</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>260</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;-----</string>
       </property>
      </widget>
     </widget>
@@ -404,35 +417,6 @@
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Downstairs, maybe here there's a fire and you use&lt;/p&gt;&lt;p&gt;the fire extinguisher to get rid of it, and lose alot of&lt;/p&gt;&lt;p&gt;health for the craic &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QSlider" name="verticalSlider">
-      <property name="geometry">
-       <rect>
-        <x>230</x>
-        <y>190</y>
-        <width>16</width>
-        <height>160</height>
-       </rect>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
-     <widget class="QProgressBar" name="fireProgress">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>190</y>
-        <width>161</width>
-        <height>161</height>
-       </rect>
-      </property>
-      <property name="value">
-       <number>24</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton">
@@ -464,20 +448,104 @@
        <enum>Qt::Vertical</enum>
       </property>
      </widget>
+     <widget class="QPushButton" name="goBtn_2">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>240</y>
+        <width>151</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Go</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>370</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;------</string>
+      </property>
+     </widget>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="quitBtn">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>450</y>
-      <width>80</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Quit</string>
-    </property>
+    <widget class="QWidget" name="page_9">
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>70</y>
+        <width>491</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Found Axe. Can go back or go down stairs</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>280</y>
+        <width>111</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;-----</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>280</y>
+        <width>111</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Go down stairs</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_10">
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>170</y>
+        <width>201</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Found firefighter, Saved</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_11">
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>80</y>
+        <width>271</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>lift filled with smoke, you dead</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
    <widget class="QProgressBar" name="healthBar">
     <property name="geometry">
@@ -528,38 +596,5 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections>
-  <connection>
-   <sender>quitBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>89</x>
-     <y>489</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>341</x>
-     <y>451</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>verticalSlider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>fireProgress</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>408</x>
-     <y>292</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>310</x>
-     <y>293</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

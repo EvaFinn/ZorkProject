@@ -25,7 +25,6 @@ MainWindow::MainWindow(QWidget *parent) :
 //    movie = new QMovie("qrc:/images/firegif.gif");
 //    QLabel *processLabel = new QLabel(this);
 //    processLabel->setMovie(movie);
-
 //    this->connect(this->ui->upBtn, SIGNAL(clicked()), this,SLOT(on_upBtn_click()));
 //    this->connect(this->ui->downBtn, SIGNAL(clicked()), this,SLOT(on_downBtn_click()));
 }
@@ -67,6 +66,7 @@ void MainWindow::on_radioButton_clicked()
 void MainWindow::on_enterLiftBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
+    ui->radioButton->setChecked(false);
     this->levelCount=6;
     ui->floorNumber->display(levelCount);
 }
@@ -100,13 +100,19 @@ void MainWindow::on_downBtn_clicked()
 
 void MainWindow::on_goBtn_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(4);
+    if(levelCount < 6){
+        ui->stackedWidget->setCurrentIndex(10);
+    }
+    else{
+        ui->stackedWidget->setCurrentIndex(4);
+    }
 }
 void MainWindow::on_downStairsBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(7);
     this->value=0;
     ui->progressBar->setValue(value);
+    ui->goBtn_2->setEnabled(false);
 }
 
 void MainWindow::on_leftBtn_clicked()
@@ -128,4 +134,32 @@ void MainWindow::on_pushButton_clicked()
 {
     ui->progressBar->setValue(value);
     value++;
+    if(value == 100){
+        ui->goBtn_2->setEnabled(true);
+    }
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(7);
+}
+
+void MainWindow::on_goBtn_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(8);
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(6);
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(9);
 }
