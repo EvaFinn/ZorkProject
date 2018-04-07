@@ -21,6 +21,11 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public slots:
+    void TimerEvent();
+    void setUpItems();
+
+
 private slots:
     void on_windowBtn_clicked();
 
@@ -62,7 +67,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    ZorkUL *zork;
+//    ZorkUL *zork;
     QMediaPlayer *breakWindow;
     QMediaPlayer *falling;
     QMediaPlayer *bell;

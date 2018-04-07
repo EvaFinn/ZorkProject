@@ -1,5 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "item.h"
+#include "axe.h"
+#include "extinguisher.h"
+using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -8,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     ui->stackedWidget->setCurrentIndex(0);
-    zork = new ZorkUL();
 
     breakWindow = new QMediaPlayer();
     breakWindow->setMedia(QUrl("qrc:/sounds/impact_glass_window_smash_005.mp3"));
@@ -19,19 +22,38 @@ MainWindow::MainWindow(QWidget *parent) :
     bell = new QMediaPlayer();
     bell->setMedia(QUrl("qrc:/sounds/bell.mp3"));
 
-    ui->healthBar->setMaximum(0);
-    ui->healthBar->setMinimum(0);
+    this->ui->healthBar->setValue(100);
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(TimerEvent()));
+    timer->start(10000);
 
-//    movie = new QMovie("qrc:/images/firegif.gif");
-//    QLabel *processLabel = new QLabel(this);
-//    processLabel->setMovie(movie);
-//    this->connect(this->ui->upBtn, SIGNAL(clicked()), this,SLOT(on_upBtn_click()));
-//    this->connect(this->ui->downBtn, SIGNAL(clicked()), this,SLOT(on_downBtn_click()));
+    setUpItems();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::TimerEvent()
+{
+  int value = this->ui->healthBar->value();
+  this->ui->healthBar->setValue(value-1);//ony decreases by 1% at the minute
+  //maybe put destructor in here??
+
+  if(value == 0){
+      ui->stackedWidget->setCurrentIndex(1);
+  }
+}
+
+void MainWindow::setUpItems(){
+    Axe axe;
+    Extinguisher extinguisher;
+    Item *item1 = &axe;
+    Item *item2 = &extinguisher;
+
+    cout << item1->getType() << endl;
+    cout << item2->getType() << endl;
 }
 
 void MainWindow::on_windowBtn_clicked()
@@ -47,7 +69,6 @@ void MainWindow::on_windowBtn_clicked()
 
 void MainWindow::on_elevatorBtn_clicked()
 {
-    //ui->label->setText(QString::fromStdString(zork->elevatorDeath()));
     ui->stackedWidget->setCurrentIndex(2);
     ui->enterLiftBtn->setDisabled(true);
 }
@@ -101,7 +122,8 @@ void MainWindow::on_downBtn_clicked()
 void MainWindow::on_goBtn_clicked()
 {
     if(levelCount < 6){
-        ui->stackedWidget->setCurrentIndex(10);
+        ui->stackedWidget->setCurrentIndex(1);
+        ui->windowDeathLabel->setText("Elevator filled with smoke \n\tYou Died");
     }
     else{
         ui->stackedWidget->setCurrentIndex(4);
@@ -163,3 +185,4 @@ void MainWindow::on_pushButton_3_clicked()
 {
     ui->stackedWidget->setCurrentIndex(9);
 }
+
