@@ -14,25 +14,79 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QPushButton:hover
-{
-	background-color: green;
-}2</string>
+   <string notr="true">QPushButton {
+	background-color : rgb(252, 1, 7);
+     border-style: outset;
+     border-width: 2px;
+     border-color: rgb(253, 128, 8);
+	font-family : &quot;Times New Roman&quot;, Times, serif;
+}
+
+QPushButton:hover{
+	background-color: rgb(254, 204, 102);
+     border-style: outset;
+     border-width: 2px;
+     border-color: rgb(253, 128, 8);
+	font-family : &quot;Times New Roman&quot;, Times, serif;
+
+}
+
+QPushButton:pressed {
+    background-color: rgb(255, 0, 0);
+     border-style: outset;
+     border-width: 2px;
+     border-color: rgb(253, 128, 8);
+	font-family : &quot;Times New Roman&quot;, Times, serif;
+
+}
+
+QProgressBar {
+    border: 2px solid red;
+    border-radius: 5px;
+}
+
+QProgressBar#healthBar{
+    border: 2px solid red;
+    border-radius: 5px;
+	color: green;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(252, 1, 7, 255), stop:0.26943 rgba(253, 102, 8, 255), stop:1 rgba(46, 255, 7, 255));
+}
+
+QProgressBar#healthBar::chunk {
+    background-color: rgb(29, 223, 59);
+    width: 5px;
+	margin: 0.5px;
+}
+
+QLabel {
+	font-family : &quot;Times New Roman&quot;, Times, serif;
+}
+</string>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">font: 8pt &quot;MS Sans Serif&quot;;
+</string>
+   </property>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
-      <width>741</width>
-      <height>441</height>
+      <y>10</y>
+      <width>781</width>
+      <height>411</height>
      </rect>
     </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="page">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
@@ -45,6 +99,9 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QPushButton" name="windowBtn">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>Window</string>
          </property>
@@ -76,7 +133,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;You can:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;-Jump out the window&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;-Go down the elevator&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;-Go down the stairs&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Choose one&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#fd1104;&quot;&gt;A fire started in your building&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600; color:#fc0107;&quot;&gt;You can:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600; color:#fc0107;&quot;&gt;-Jump out the window&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600; color:#fc0107;&quot;&gt;-Go down the elevator&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600; color:#fc0107;&quot;&gt;-Go down the stairs&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
@@ -108,11 +165,14 @@
       <widget class="QLabel" name="windowDeathLabel">
        <property name="geometry">
         <rect>
-         <x>260</x>
-         <y>140</y>
-         <width>161</width>
-         <height>101</height>
+         <x>120</x>
+         <y>50</y>
+         <width>501</width>
+         <height>281</height>
         </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
        </property>
        <property name="styleSheet">
         <string notr="true">#windowDeathLabel{
@@ -125,7 +185,7 @@
 }</string>
        </property>
        <property name="text">
-        <string>You Died</string>
+        <string>                  You Died</string>
        </property>
       </widget>
       <widget class="QLabel" name="fireLabel">
@@ -139,6 +199,19 @@
        </property>
        <property name="text">
         <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="restart">
+       <property name="geometry">
+        <rect>
+         <x>330</x>
+         <y>370</y>
+         <width>80</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Try Again</string>
        </property>
       </widget>
      </widget>
@@ -360,6 +433,19 @@
        <string>-------&gt;</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="pickExting">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>310</y>
+        <width>131</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pick up Extinguisher</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_7">
      <widget class="QLabel" name="label_6">
@@ -375,11 +461,11 @@
        <string>Stairs? Maybe find another item? Or use fire extinguisher on fire blockig stairs</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="downStairsBtn">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>263</y>
+        <x>390</x>
+        <y>260</y>
         <width>161</width>
         <height>51</height>
        </rect>
@@ -388,26 +474,180 @@
        <string>Down Stairs</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>260</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;-----</string>
+      </property>
+     </widget>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="quitBtn">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>450</y>
-      <width>80</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Quit</string>
-    </property>
+    <widget class="QWidget" name="page_8">
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>60</y>
+        <width>401</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Downstairs, maybe here there's a fire and you use&lt;/p&gt;&lt;p&gt;the fire extinguisher to get rid of it, and lose alot of&lt;/p&gt;&lt;p&gt;health for the craic &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>380</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Spray?</string>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="progressBar">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>140</y>
+        <width>161</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>24</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="goBtn_2">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>240</y>
+        <width>151</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Go</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>370</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;------</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_9">
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>70</y>
+        <width>261</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Found Axe. Can go back or go down stairs</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>280</y>
+        <width>111</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;-----</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>280</y>
+        <width>111</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Go down stairs</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pickAxeBtn">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>270</y>
+        <width>121</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pick up Axe</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_10">
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>170</y>
+        <width>201</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Found firefighter, Saved</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_11">
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>80</y>
+        <width>271</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>lift filled with smoke, you dead</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
    <widget class="QProgressBar" name="healthBar">
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>450</y>
+      <y>460</y>
       <width>431</width>
       <height>23</height>
      </rect>
@@ -416,18 +656,59 @@
      <number>24</number>
     </property>
    </widget>
-   <widget class="QPushButton" name="restart">
+   <widget class="QLabel" name="inventory">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>50</x>
       <y>450</y>
-      <width>80</width>
-      <height>24</height>
+      <width>141</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>restart</string>
+     <string/>
     </property>
+   </widget>
+   <widget class="QLabel" name="inventory2">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>400</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>420</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Oxygen level</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>430</y>
+      <width>111</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Inventory</string>
+     </property>
+    </item>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -436,7 +717,7 @@
      <x>0</x>
      <y>0</y>
      <width>735</width>
-     <height>22</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>
@@ -452,22 +733,5 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections>
-  <connection>
-   <sender>quitBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>146</x>
-     <y>448</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>341</x>
-     <y>451</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

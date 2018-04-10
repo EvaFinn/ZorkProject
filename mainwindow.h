@@ -2,12 +2,16 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "ZorkUL.h"
-#include <QMediaPlayer>
+//#include <QMediaPlayer>
 #include <QRadialGradient>
 #include <QtCore>
 #include <QtGui>
 #include <QGraphicsScene>
+#include <vector>
+#include "item.h"
+#include "inventory.h"
+#include "axe.h"
+#include "extinguisher.h"
 
 namespace Ui {
 class MainWindow;
@@ -20,8 +24,25 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    Axe axe;
+    Extinguisher extinguisher;
+    Axe *axe1;
+    void makeTimer();
+    void setSounds();
+
+private:
+    Ui::MainWindow *ui;
+    /*QMediaPlayer *breakWindow;
+    QMediaPlayer *falling;
+    QMediaPlayer *bell;*/
+    int levelCount;
+    int value;
+    QGraphicsScene scene;
+
 public slots:
     void TimerEvent();
+    //void openInventory();
+
 
 private slots:
     void on_windowBtn_clicked();
@@ -42,21 +63,28 @@ private slots:
 
     void on_goBtn_clicked();
 
-    void on_pushButton_clicked();
+    void on_downStairsBtn_clicked();
 
     void on_leftBtn_clicked();
 
     void on_rightBtn2_clicked();
 
-private:
-    Ui::MainWindow *ui;
-    ZorkUL *zork;
-    QMediaPlayer *breakWindow;
-    QMediaPlayer *falling;
-    QMediaPlayer *bell;
-    int levelCount;
-    QGraphicsScene scene;
-//    QMovie *movie;
+    void on_rightBtn_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_goBtn_2_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_pickAxeBtn_clicked();
+    void on_pickExting_clicked();
 };
 
 #endif // MAINWINDOW_H
