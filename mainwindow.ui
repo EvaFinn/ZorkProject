@@ -53,7 +53,7 @@ QProgressBar#healthBar{
 }
 
 QProgressBar#healthBar::chunk {
-    background-color: rgb(29, 223, 59);
+    background-color: cyan;
     width: 5px;
 	margin: 0.5px;
 }

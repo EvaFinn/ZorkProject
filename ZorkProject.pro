@@ -30,14 +30,16 @@ SOURCES += \
         item.cpp \
     axe.cpp \
     extinguisher.cpp \
-    inventory.cpp
+    inventory.cpp \
+    decrease.cpp
 
 HEADERS += \
         mainwindow.h \
         item.h \
     axe.h \
     extinguisher.h \
-    inventory.h
+    inventory.h \
+    decrease.h
 
 FORMS += \
         mainwindow.ui

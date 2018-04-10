@@ -3,10 +3,35 @@
 #include "item.h"
 #include "axe.h"
 #include "extinguisher.h"
-#include "inventory.h"
 #include <vector>
+#include "decrease.h"
 
 using namespace std;
+
+class Marks{
+public:
+  int val;
+  Marks(){
+      val = 0;
+  }
+  Marks(int v){
+    val = v;
+  }
+  Marks operator--(int){
+      Marks d(*this);
+      val = val - 1;
+      return d;
+  }
+
+  friend Marks operator++(Marks&, int);
+};
+
+Marks operator++(Marks &m, int){
+    Marks d(m);
+    m.val = m.val + 5;
+    return d;
+}
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -35,7 +60,7 @@ void MainWindow::setSounds(){
 }
 
 void MainWindow::makeTimer(){
-    this->ui->healthBar->setTextVisible(false);
+    //this->ui->healthBar->setTextVisible(false);
     this->ui->healthBar->setValue(100);
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(TimerEvent()));
@@ -44,7 +69,10 @@ void MainWindow::makeTimer(){
 
 void MainWindow::TimerEvent(){
   int value = this->ui->healthBar->value();
-  this->ui->healthBar->setValue(value-1);//ony decreases by 1% at the minute
+  Marks aValue(value);
+  aValue--;
+  value = aValue.val;
+  this->ui->healthBar->setValue(value);//ony decreases by 1% at the minute
   //maybe put destructor in here??
 
   if(value == 0){
@@ -143,9 +171,13 @@ void MainWindow::on_rightBtn_clicked(){
 }
 
 void MainWindow::on_pushButton_clicked(){
-    ui->progressBar->setValue(value);
-    value++;
-    if(value == 100){
+    int newValue = this->ui->progressBar->value();
+    Marks aValue(newValue);
+    aValue++;
+    newValue = aValue.val;
+    this->ui->progressBar->setValue(newValue);
+
+    if(newValue == 100){
         ui->goBtn_2->setEnabled(true);
     }
 }
