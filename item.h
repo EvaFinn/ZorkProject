@@ -3,7 +3,7 @@
 
 #include <map>
 #include <string>
-#include <iostream>
+#include <QObject>
 
 using namespace std;
 
@@ -13,6 +13,7 @@ public:
     Item ();
     virtual ~Item() {}
     virtual string getType();
+
 };
 
 #endif /*ITEM_H_*/

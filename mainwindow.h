@@ -10,6 +10,8 @@
 #include <vector>
 #include "item.h"
 #include "inventory.h"
+#include "axe.h"
+#include "extinguisher.h"
 
 namespace Ui {
 class MainWindow;
@@ -22,15 +24,24 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    Item *item1;
-    Item *item2;
-
-public slots:
-    void TimerEvent();
-    void setUpItems();
+    Axe axe;
+    Extinguisher extinguisher;
+    Axe *axe1;
     void openInventory(Inventory itemarr);
     void makeTimer();
     void setSounds();
+
+private:
+    Ui::MainWindow *ui;
+    QMediaPlayer *breakWindow;
+    QMediaPlayer *falling;
+    QMediaPlayer *bell;
+    int levelCount;
+    int value;
+    QGraphicsScene scene;
+
+public slots:
+    void TimerEvent();
 
 
 private slots:
@@ -72,22 +83,8 @@ private slots:
 
     void on_pushButton_3_clicked();
 
-    void on_inventoryBtn_clicked();
-
     void on_pickAxeBtn_clicked();
-
-private:
-    Ui::MainWindow *ui;
-    QMediaPlayer *breakWindow;
-    QMediaPlayer *falling;
-    QMediaPlayer *bell;
-    int levelCount;
-    int value;
-    QGraphicsScene scene;
-//    vector<Item> items;
-//    Inventory inv;
-
-
+    void on_pickExting_clicked();
 };
 
 #endif // MAINWINDOW_H

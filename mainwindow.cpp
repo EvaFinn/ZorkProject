@@ -5,49 +5,8 @@
 #include "extinguisher.h"
 #include "inventory.h"
 #include <vector>
-//#include <QObject>
 
 using namespace std;
-
-//template <class T>
-//class Container {
-//private:
-//    int numItems;
-//    int capacity;
-
-//public:
-//    Container();
-//    ~Container();
-//    void addItem(T item);
-//    const QString printContents();
-//    vector<T> items;
-//};
-
-//template <class T>
-//Container<T>::Container(){
-//    this->numItems = 0;
-//    this->capacity = 0;
-//}
-
-//template <class T>
-//Container<T>::~Container(){
-
-//}
-
-//template <class T>
-//void Container<T>::addItem(T item){
-//    this->items.push_back(item);
-//    this->numItems++;
-//}
-
-//template <class T>
-//const QString Container<T>::printContents(){
-//    string inventory = "";
-//    for(int i = 0; i < items.size(); i++){
-//        inventory = items[i] + " ";
-//    }
-//    return inventory;
-//}
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -59,13 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setSounds();
     makeTimer();
 
-    ui->inventory = new QLabel("EMPTY");
-    Axe axe;
-    item1 = &axe;
-    //connect(item1, SIGNAL(itemInfo(QString)), ui->inventory, SLOT(setText(QString)));
-
-
-    //setUpItems();
+    //this->ui->inventory->setText("No items found");
 }
 
 MainWindow::~MainWindow(){
@@ -101,42 +54,19 @@ void MainWindow::TimerEvent(){
   }
 }
 
-
-
-
-
-
-void MainWindow::setUpItems(){
-//    Axe axe;
-//    Extinguisher extinguisher;
-//    *item1 = &axe;
-//    *item2 = &extinguisher;
-
-//    QObject::connect(ui->inventoryBtn, SIGNAL(clicked()), this, SLOT(getType()));
-//    QObject::connect(item1, SIGNAL(updateItem(QString), ui->inventory, SLOT(setText(QString)));
-}
-
-//void MainWindow::getItems(){
-//    item1->getType
-//}
-
 void MainWindow::openInventory(Inventory itemarr){
 
 }
 
-void MainWindow::on_inventoryBtn_clicked(){
-    //openInventory(inv);
-}
-
 void MainWindow::on_pickAxeBtn_clicked()
 {
-    //item1->getItem();
+    this->ui->inventory->setText(axe.getName());
 }
 
-
-
-
-
+void MainWindow::on_pickExting_clicked()
+{
+    this->ui->inventory2->setText(extinguisher.getName());
+}
 
 void MainWindow::on_windowBtn_clicked(){
     ui->stackedWidget->setCurrentIndex(1);
