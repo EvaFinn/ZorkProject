@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "decrease.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -7,10 +8,16 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->ui->healthBar->setValue(100);
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(TimerEvent()));
-    timer->start(10000); //set to 10 secs at the minute
 
+
+    /*void myTimer(MainWindow *pointer)
+    {*/
+        QTimer *timer = new QTimer(this);
+        connect(timer, SIGNAL(timeout()), this, SLOT(TimerEvent()));
+        timer->start(10000); //set to 10 secs at the minute
+    //}
+
+    //myTimer(this);
     ui->stackedWidget->setCurrentIndex(0);
     zork = new ZorkUL();
 
@@ -30,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //    this->connect(this->ui->upBtn, SIGNAL(clicked()), this,SLOT(on_upBtn_click()));
 //    this->connect(this->ui->downBtn, SIGNAL(clicked()), this,SLOT(on_downBtn_click()));
 }
+
 
 MainWindow::~MainWindow()
 {
@@ -57,9 +65,12 @@ void MainWindow::on_windowBtn_clicked()
 }
 void MainWindow::TimerEvent()
 {
+
   int value = this->ui->healthBar->value();
-  this->ui->healthBar->setValue(value-1);//ony decreases by 1% at the minute
-  //maybe put destructor in here??
+  Decrease aValue(value);
+  aValue--;
+  value = aValue.val;
+  this->ui->healthBar->setValue(value);//ony decreases by 1% at the minute
 }
 
 void MainWindow::on_elevatorBtn_clicked()
