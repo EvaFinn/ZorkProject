@@ -4,12 +4,14 @@
 #include <map>
 #include <string>
 #include <iostream>
+
 using namespace std;
 
 class Item {
+
 public:
     Item ();
-    virtual ~Item();
+    virtual ~Item() {}
     virtual string getType();
 };
 

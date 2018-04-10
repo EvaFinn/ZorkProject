@@ -4,10 +4,6 @@ Item::Item(){
 
 }
 
-Item::~Item(){
-
-}
-
 string Item::getType(){
 
 }

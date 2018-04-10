@@ -3,16 +3,76 @@
 #include "item.h"
 #include "axe.h"
 #include "extinguisher.h"
+#include "inventory.h"
+#include <vector>
+//#include <QObject>
+
 using namespace std;
+
+//template <class T>
+//class Container {
+//private:
+//    int numItems;
+//    int capacity;
+
+//public:
+//    Container();
+//    ~Container();
+//    void addItem(T item);
+//    const QString printContents();
+//    vector<T> items;
+//};
+
+//template <class T>
+//Container<T>::Container(){
+//    this->numItems = 0;
+//    this->capacity = 0;
+//}
+
+//template <class T>
+//Container<T>::~Container(){
+
+//}
+
+//template <class T>
+//void Container<T>::addItem(T item){
+//    this->items.push_back(item);
+//    this->numItems++;
+//}
+
+//template <class T>
+//const QString Container<T>::printContents(){
+//    string inventory = "";
+//    for(int i = 0; i < items.size(); i++){
+//        inventory = items[i] + " ";
+//    }
+//    return inventory;
+//}
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     ui->stackedWidget->setCurrentIndex(0);
 
+    setSounds();
+    makeTimer();
+
+    ui->inventory = new QLabel("EMPTY");
+    Axe axe;
+    item1 = &axe;
+    //connect(item1, SIGNAL(itemInfo(QString)), ui->inventory, SLOT(setText(QString)));
+
+
+    //setUpItems();
+}
+
+MainWindow::~MainWindow(){
+    delete ui;
+}
+
+void MainWindow::setSounds(){
     breakWindow = new QMediaPlayer();
     breakWindow->setMedia(QUrl("qrc:/sounds/impact_glass_window_smash_005.mp3"));
 
@@ -21,22 +81,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     bell = new QMediaPlayer();
     bell->setMedia(QUrl("qrc:/sounds/bell.mp3"));
+}
 
+void MainWindow::makeTimer(){
+    this->ui->healthBar->setTextVisible(false);
     this->ui->healthBar->setValue(100);
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(TimerEvent()));
-    timer->start(10000);
-
-    setUpItems();
+    timer->start(1000);
 }
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
-
-void MainWindow::TimerEvent()
-{
+void MainWindow::TimerEvent(){
   int value = this->ui->healthBar->value();
   this->ui->healthBar->setValue(value-1);//ony decreases by 1% at the minute
   //maybe put destructor in here??
@@ -46,18 +101,44 @@ void MainWindow::TimerEvent()
   }
 }
 
-void MainWindow::setUpItems(){
-    Axe axe;
-    Extinguisher extinguisher;
-    Item *item1 = &axe;
-    Item *item2 = &extinguisher;
 
-    cout << item1->getType() << endl;
-    cout << item2->getType() << endl;
+
+
+
+
+void MainWindow::setUpItems(){
+//    Axe axe;
+//    Extinguisher extinguisher;
+//    *item1 = &axe;
+//    *item2 = &extinguisher;
+
+//    QObject::connect(ui->inventoryBtn, SIGNAL(clicked()), this, SLOT(getType()));
+//    QObject::connect(item1, SIGNAL(updateItem(QString), ui->inventory, SLOT(setText(QString)));
 }
 
-void MainWindow::on_windowBtn_clicked()
+//void MainWindow::getItems(){
+//    item1->getType
+//}
+
+void MainWindow::openInventory(Inventory itemarr){
+
+}
+
+void MainWindow::on_inventoryBtn_clicked(){
+    //openInventory(inv);
+}
+
+void MainWindow::on_pickAxeBtn_clicked()
 {
+    //item1->getItem();
+}
+
+
+
+
+
+
+void MainWindow::on_windowBtn_clicked(){
     ui->stackedWidget->setCurrentIndex(1);
     breakWindow->play();
     falling->play();
@@ -67,38 +148,32 @@ void MainWindow::on_windowBtn_clicked()
     movie->start();
 }
 
-void MainWindow::on_elevatorBtn_clicked()
-{
+void MainWindow::on_elevatorBtn_clicked(){
     ui->stackedWidget->setCurrentIndex(2);
     ui->enterLiftBtn->setDisabled(true);
 }
 
-void MainWindow::on_stairsBtn_clicked()
-{
+void MainWindow::on_stairsBtn_clicked(){
     ui->label->setText("Stair door is blocked, try find something to clear it with");
 }
 
-void MainWindow::on_radioButton_clicked()
-{
+void MainWindow::on_radioButton_clicked(){
    bell->play();
    ui->enterLiftBtn->setEnabled(true);
 }
 
-void MainWindow::on_enterLiftBtn_clicked()
-{
+void MainWindow::on_enterLiftBtn_clicked(){
     ui->stackedWidget->setCurrentIndex(3);
     ui->radioButton->setChecked(false);
     this->levelCount=6;
     ui->floorNumber->display(levelCount);
 }
 
-void MainWindow::on_restart_clicked()
-{
+void MainWindow::on_restart_clicked(){
     ui->stackedWidget->setCurrentIndex(0);
 }
 
-void MainWindow::on_upBtn_clicked()
-{
+void MainWindow::on_upBtn_clicked(){
     levelCount++;
     ui->floorNumber->display(levelCount);
     ui->downBtn->setEnabled(true);
@@ -108,8 +183,7 @@ void MainWindow::on_upBtn_clicked()
     }
 }
 
-void MainWindow::on_downBtn_clicked()
-{
+void MainWindow::on_downBtn_clicked(){
     levelCount--;
     ui->floorNumber->display(levelCount);
     ui->upBtn->setEnabled(true);
@@ -119,8 +193,7 @@ void MainWindow::on_downBtn_clicked()
     }
 }
 
-void MainWindow::on_goBtn_clicked()
-{
+void MainWindow::on_goBtn_clicked(){
     if(levelCount < 6){
         ui->stackedWidget->setCurrentIndex(1);
         ui->windowDeathLabel->setText("Elevator filled with smoke \n\tYou Died");
@@ -129,31 +202,27 @@ void MainWindow::on_goBtn_clicked()
         ui->stackedWidget->setCurrentIndex(4);
     }
 }
-void MainWindow::on_downStairsBtn_clicked()
-{
+
+void MainWindow::on_downStairsBtn_clicked(){
     ui->stackedWidget->setCurrentIndex(7);
     this->value=0;
     ui->progressBar->setValue(value);
     ui->goBtn_2->setEnabled(false);
 }
 
-void MainWindow::on_leftBtn_clicked()
-{
+void MainWindow::on_leftBtn_clicked(){
     ui->stackedWidget->setCurrentIndex(5);
 }
 
-void MainWindow::on_rightBtn2_clicked()
-{
+void MainWindow::on_rightBtn2_clicked(){
     ui->stackedWidget->setCurrentIndex(4);
 }
 
-void MainWindow::on_rightBtn_clicked()
-{
+void MainWindow::on_rightBtn_clicked(){
     ui->stackedWidget->setCurrentIndex(6);
 }
 
-void MainWindow::on_pushButton_clicked()
-{
+void MainWindow::on_pushButton_clicked(){
     ui->progressBar->setValue(value);
     value++;
     if(value == 100){
@@ -161,28 +230,22 @@ void MainWindow::on_pushButton_clicked()
     }
 }
 
-void MainWindow::on_pushButton_2_clicked()
-{
+void MainWindow::on_pushButton_2_clicked(){
     ui->stackedWidget->setCurrentIndex(7);
 }
 
-void MainWindow::on_goBtn_2_clicked()
-{
+void MainWindow::on_goBtn_2_clicked(){
     ui->stackedWidget->setCurrentIndex(8);
 }
 
-void MainWindow::on_pushButton_4_clicked()
-{
+void MainWindow::on_pushButton_4_clicked(){
     ui->stackedWidget->setCurrentIndex(4);
 }
 
-void MainWindow::on_pushButton_5_clicked()
-{
+void MainWindow::on_pushButton_5_clicked(){
     ui->stackedWidget->setCurrentIndex(6);
 }
 
-void MainWindow::on_pushButton_3_clicked()
-{
+void MainWindow::on_pushButton_3_clicked(){
     ui->stackedWidget->setCurrentIndex(9);
 }
-

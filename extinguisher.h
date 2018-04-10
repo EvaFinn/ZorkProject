@@ -13,6 +13,7 @@ private:
 
 public:
     Extinguisher();
+    ~Extinguisher() {}
     string getType();
 };
 

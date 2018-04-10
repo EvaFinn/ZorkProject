@@ -2,12 +2,14 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "ZorkUL.h"
 #include <QMediaPlayer>
 #include <QRadialGradient>
 #include <QtCore>
 #include <QtGui>
 #include <QGraphicsScene>
+#include <vector>
+#include "item.h"
+#include "inventory.h"
 
 namespace Ui {
 class MainWindow;
@@ -20,10 +22,15 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    Item *item1;
+    Item *item2;
 
 public slots:
     void TimerEvent();
     void setUpItems();
+    void openInventory(Inventory itemarr);
+    void makeTimer();
+    void setSounds();
 
 
 private slots:
@@ -65,16 +72,22 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void on_inventoryBtn_clicked();
+
+    void on_pickAxeBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
-//    ZorkUL *zork;
     QMediaPlayer *breakWindow;
     QMediaPlayer *falling;
     QMediaPlayer *bell;
     int levelCount;
     int value;
     QGraphicsScene scene;
-//    QMovie *movie;
+//    vector<Item> items;
+//    Inventory inv;
+
+
 };
 
 #endif // MAINWINDOW_H
