@@ -17,8 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setSounds();
     makeTimer();
-
-    //this->ui->inventory->setText("No items found");
 }
 
 MainWindow::~MainWindow(){
@@ -54,10 +52,6 @@ void MainWindow::TimerEvent(){
   }
 }
 
-void MainWindow::openInventory(Inventory itemarr){
-
-}
-
 void MainWindow::on_pickAxeBtn_clicked()
 {
     this->ui->inventory->setText(axe.getName());
@@ -72,10 +66,6 @@ void MainWindow::on_windowBtn_clicked(){
     ui->stackedWidget->setCurrentIndex(1);
     breakWindow->play();
     falling->play();
-
-    QMovie *movie = new QMovie("qrc:/images/firegif.gif");
-    ui->fireLabel->setMovie(movie);
-    movie->start();
 }
 
 void MainWindow::on_elevatorBtn_clicked(){

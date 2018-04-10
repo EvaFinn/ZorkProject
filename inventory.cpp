@@ -16,15 +16,3 @@ void Inventory::addItem(Item item){
     items[numItems++] = &item;
 
 }
-
-void Inventory::removeItem(int index){
-
-}
-
-void Inventory::debugPrint(){
-
-}
-
-//int Inventory::getInfo(QString itemType){
-//    emit updateIetm();
-//}

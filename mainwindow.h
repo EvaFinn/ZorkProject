@@ -26,8 +26,6 @@ public:
     ~MainWindow();
     Axe axe;
     Extinguisher extinguisher;
-    Axe *axe1;
-    void openInventory(Inventory itemarr);
     void makeTimer();
     void setSounds();
 
