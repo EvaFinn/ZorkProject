@@ -29,9 +29,7 @@ SOURCES += \
         mainwindow.cpp \
         item.cpp \
     axe.cpp \
-    extinguisher.cpp \
-    inventory.cpp \
-    decrease.cpp
+    extinguisher.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,7 +37,7 @@ HEADERS += \
     axe.h \
     extinguisher.h \
     inventory.h \
-    decrease.h
+    inventory.h
 
 FORMS += \
         mainwindow.ui

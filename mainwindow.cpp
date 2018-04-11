@@ -3,23 +3,23 @@
 #include "item.h"
 #include "axe.h"
 #include "extinguisher.h"
+#include "inventory.h"
 #include <vector>
-#include "decrease.h"
 
 using namespace std;
 
 class Marks{
 public:
-  int val;
+  double val;
   Marks(){
-      val = 0;
+      val = 0.0;
   }
-  Marks(int v){
+  Marks(double v){
     val = v;
   }
   Marks operator--(int){
       Marks d(*this);
-      val = val - 1;
+      val = val - 1.0;
       return d;
   }
 
@@ -28,7 +28,7 @@ public:
 
 Marks operator++(Marks &m, int){
     Marks d(m);
-    m.val = m.val + 5;
+    m.val = m.val + 5.0;
     return d;
 }
 
@@ -40,15 +40,33 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
 
+
     setSounds();
     makeTimer();
+
+    fire->play();
 }
 
 MainWindow::~MainWindow(){
     delete ui;
+    delete timer;
+    delete breakWindow;
+    delete falling;
+    delete bell;
+    delete fire;
+    delete cough;
 }
 
 void MainWindow::setSounds(){
+    ui->volumeSlider->setRange(0, 100);
+    ui->volumeSlider->setFixedWidth(100);
+    ui->volumeSlider->setValue(50);
+    fire = new QMediaPlayer();
+    fire->setMedia(QUrl("qrc:/sounds/firesound.mp3"));
+
+    connect(ui->volumeSlider, SIGNAL(valueChanged(int)), this, SIGNAL(volumeChanged(int)));
+    connect(ui->volumeSlider, SIGNAL(valueChanged(int)), fire, SLOT(setVolume(int)));
+
     breakWindow = new QMediaPlayer();
     breakWindow->setMedia(QUrl("qrc:/sounds/impact_glass_window_smash_005.mp3"));
 
@@ -60,6 +78,28 @@ void MainWindow::setSounds(){
 
     cough = new QMediaPlayer();
     cough->setMedia(QUrl("qrc:/sounds/cough.mp3"));
+}
+
+int MainWindow::volume() const{
+    return ui->volumeSlider->value();
+}
+
+void MainWindow::setVolume(int volume){
+    if(ui->checkBox->isChecked() == false){
+        fire->setVolume(volume);
+    }else{
+        fire->setVolume(0);
+    }
+}
+
+void MainWindow::on_checkBox_toggled(bool checked){
+    if(checked){
+        fire->setVolume(0);
+    }
+    else{
+        fire->setVolume(100);
+    }
+
 }
 
 void MainWindow::makeTimer(){
@@ -79,23 +119,30 @@ void MainWindow::TimerEvent(){
 
   if(value == 0){
       ui->stackedWidget->setCurrentIndex(1);
+      timer->stop();
   }
 }
 
-void MainWindow::on_pickAxeBtn_clicked()
-{
-    this->ui->invBox->addItem(axe.getName());
+void MainWindow::on_pickAxeBtn_clicked(){
+    Inventory<Axe> inv;
+    Axe test;
+    test = inv.addItem(axe);
+    this->ui->invBox->addItem(test.getName());
 }
 
-void MainWindow::on_pickExting_clicked()
-{
-    this->ui->invBox->addItem(extinguisher.getName());
+void MainWindow::on_pickExting_clicked(){
+    Inventory<Extinguisher> inv;
+    Extinguisher test;
+    test = inv.addItem(extinguisher);
+    this->ui->invBox->addItem(test.getName());
 }
 
 void MainWindow::on_windowBtn_clicked(){
     ui->stackedWidget->setCurrentIndex(1);
     breakWindow->play();
     falling->play();
+    timer->stop();
+    this->ui->healthBar->setValue(0);
 }
 
 void MainWindow::on_elevatorBtn_clicked(){
@@ -104,7 +151,13 @@ void MainWindow::on_elevatorBtn_clicked(){
 }
 
 void MainWindow::on_stairsBtn_clicked(){
-    ui->label->setText("Stair door is blocked, try find something to clear it with");
+    if(ui->invBox->findText(axe.getName()) != -1){
+        ui->stackedWidget->setCurrentIndex(8);
+        ui->pickAxeBtn->setVisible(false);
+    }
+    else{
+        ui->label->setText("Stair door is blocked, try find something to clear it with");
+    }
 }
 
 void MainWindow::on_radioButton_clicked(){
@@ -121,6 +174,8 @@ void MainWindow::on_enterLiftBtn_clicked(){
 
 void MainWindow::on_restart_clicked(){
     ui->stackedWidget->setCurrentIndex(0);
+    this->ui->healthBar->setValue(100);
+    timer->start();
 }
 
 void MainWindow::on_upBtn_clicked(){
@@ -149,6 +204,9 @@ void MainWindow::on_goBtn_clicked(){
         timer->stop();
         this->ui->healthBar->setValue(0);
         cough->play();
+    }
+    else if(levelCount == 6){
+        ui->stackedWidget->setCurrentIndex(0);
     }
     else{
         ui->stackedWidget->setCurrentIndex(4);
@@ -209,4 +267,15 @@ void MainWindow::on_pushButton_5_clicked(){
 void MainWindow::on_pushButton_3_clicked(){
     ui->stackedWidget->setCurrentIndex(9);
     timer->stop();
+}
+
+void MainWindow::on_pushButton_6_clicked(){
+    ui->stackedWidget->setCurrentIndex(0);
+    this->ui->healthBar->setValue(100);
+    timer->start();
+}
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
 }

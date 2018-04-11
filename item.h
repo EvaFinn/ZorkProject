@@ -5,14 +5,12 @@
 #include <string>
 #include <QString>
 
-using namespace std;
-
 class Item {
 
 public:
     Item ();
     virtual ~Item() {}
-    virtual QString getName();
+    virtual QString getName() = 0;
 };
 
 #endif /*ITEM_H_*/

@@ -2,18 +2,24 @@
     <qresource prefix="/sounds">
         <file>impact_glass_window_smash_005.mp3</file>
         <file>falling.mp3</file>
-        <file>OH HONEY.mp3</file>
         <file>bell.mp3</file>
         <file>cough.mp3</file>
+        <file>firesound.mp3</file>
     </qresource>
     <qresource prefix="/images">
-        <file>open_elevator.png</file>
         <file>closed_elevator.png</file>
-        <file>Gold_circle.svg.png</file>
         <file>fire.jpg</file>
-        <file>firegif.gif</file>
         <file>fire1.jpg</file>
         <file>firefighter1.jpg</file>
         <file>smoke.jpg</file>
+        <file>office.jpg</file>
+        <file>escapeimage.png</file>
+        <file>extinguisherwall.jpg</file>
+        <file>insidelife.jpg</file>
+        <file>hallway.jpg</file>
+        <file>downthestairs.jpg</file>
+        <file>stairwellwindow.jpg</file>
+        <file>lockDoor.jpg</file>
+        <file>lockedDoor.jpg</file>
     </qresource>
 </RCC>
