@@ -85,7 +85,7 @@ QLabel {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QWidget" name="layoutWidget">
@@ -344,27 +344,27 @@ QLabel {
      <widget class="QPushButton" name="leftBtn">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>240</y>
-        <width>80</width>
-        <height>24</height>
+        <x>260</x>
+        <y>250</y>
+        <width>101</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;----</string>
+       <string>Go Left</string>
       </property>
      </widget>
      <widget class="QPushButton" name="rightBtn">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>240</y>
-        <width>80</width>
-        <height>24</height>
+        <x>260</x>
+        <y>310</y>
+        <width>101</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>----&gt;</string>
+       <string>Go Right</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_7">
@@ -460,7 +460,7 @@ Might need it for later</string>
        </rect>
       </property>
       <property name="text">
-       <string>Down Stairs</string>
+       <string>Go Downstairs</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_4">
@@ -473,7 +473,7 @@ Might need it for later</string>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;-----</string>
+       <string>Go Left</string>
       </property>
      </widget>
     </widget>
@@ -543,7 +543,7 @@ Might need it for later</string>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;------</string>
+       <string>Go Left</string>
       </property>
      </widget>
     </widget>
@@ -571,7 +571,7 @@ Might need it for later</string>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;-----</string>
+       <string>Go Left</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_3">
@@ -584,7 +584,7 @@ Might need it for later</string>
        </rect>
       </property>
       <property name="text">
-       <string>Go down stairs</string>
+       <string>Go Downstairs</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pickAxeBtn">
@@ -602,33 +602,125 @@ Might need it for later</string>
      </widget>
     </widget>
     <widget class="QWidget" name="page_10">
-     <widget class="QLabel" name="label_10">
+     <widget class="QFrame" name="winFrame">
       <property name="geometry">
        <rect>
-        <x>310</x>
-        <y>170</y>
-        <width>201</width>
-        <height>101</height>
+        <x>-10</x>
+        <y>0</y>
+        <width>761</width>
+        <height>421</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Found firefighter, Saved</string>
+      <property name="styleSheet">
+       <string notr="true">#winFrame{
+	background-image: url(:/images/firefighter1.jpg);
+	background-attachment: fixed;
+	background-repeat: norepeat;
+	background-position: centre
+}</string>
       </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="escape">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>0</y>
+         <width>371</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#escape{
+	font-family : &quot;Times New Roman&quot;, Times, serif;
+	font-size: 60px;
+	font-weight: bold;
+	font-variant: small-caps;
+	color: red;
+	text-align: center;
+}</string>
+       </property>
+       <property name="text">
+        <string>You Escaped!</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="safe">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>390</y>
+         <width>511</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#safe{
+	font-family : &quot;Times New Roman&quot;, Times, serif;
+	font-size: 30px;
+	font-weight: bold;
+	font-variant: small-caps;
+	color: red;
+	background-color: rgba(0, 0, 0, 148);
+	text-align: center;
+}</string>
+       </property>
+       <property name="text">
+        <string>Fireman Sam will bring you to safety.</string>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="page_11">
-     <widget class="QLabel" name="label_11">
+     <widget class="QFrame" name="smokeFrame">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>80</y>
-        <width>271</width>
-        <height>121</height>
+        <x>-1</x>
+        <y>-1</y>
+        <width>741</width>
+        <height>431</height>
        </rect>
       </property>
-      <property name="text">
-       <string>lift filled with smoke, you dead</string>
+      <property name="styleSheet">
+       <string notr="true">#smokeFrame{
+	background-image: url(:/images/smoke.jpg);
+	background-attachment: fixed;
+	background-repeat: norepeat;
+	background-position: centre
+}</string>
       </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="smokeLabel">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>140</y>
+         <width>501</width>
+         <height>151</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#smokeLabel{
+	font-family : &quot;Times New Roman&quot;, Times, serif;
+	font-size: 35px;
+	font-weight: bold;
+	font-variant: small-caps;
+	color: black;
+	text-align: center;
+}</string>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;oh no! &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;the lift filled with smoke. &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;You Died.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>
@@ -645,45 +737,6 @@ Might need it for later</string>
      <number>24</number>
     </property>
    </widget>
-   <widget class="QLabel" name="inventory">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>430</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="inventory2">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>450</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_12">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>420</y>
-      <width>121</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Inventory:</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_13">
     <property name="geometry">
      <rect>
@@ -696,6 +749,26 @@ Might need it for later</string>
     <property name="text">
      <string>Health</string>
     </property>
+   </widget>
+   <widget class="QComboBox" name="invBox">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>430</y>
+      <width>91</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string>Inventory</string>
+     </property>
+    </item>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

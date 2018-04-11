@@ -9,13 +9,11 @@ using namespace std;
 class Extinguisher : public Item
 {
 private:
-    string type;
     QString name;
 
 public:
     Extinguisher();
     ~Extinguisher() {}
-    string getType();
     QString getName();
 };
 

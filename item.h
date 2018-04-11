@@ -3,7 +3,7 @@
 
 #include <map>
 #include <string>
-#include <QObject>
+#include <QString>
 
 using namespace std;
 
@@ -12,8 +12,7 @@ class Item {
 public:
     Item ();
     virtual ~Item() {}
-    virtual string getType();
-
+    virtual QString getName();
 };
 
 #endif /*ITEM_H_*/

@@ -4,6 +4,7 @@
         <file>falling.mp3</file>
         <file>OH HONEY.mp3</file>
         <file>bell.mp3</file>
+        <file>cough.mp3</file>
     </qresource>
     <qresource prefix="/images">
         <file>open_elevator.png</file>
@@ -12,5 +13,7 @@
         <file>fire.jpg</file>
         <file>firegif.gif</file>
         <file>fire1.jpg</file>
+        <file>firefighter1.jpg</file>
+        <file>smoke.jpg</file>
     </qresource>
 </RCC>

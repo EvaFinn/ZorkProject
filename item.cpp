@@ -4,6 +4,6 @@ Item::Item(){
 
 }
 
-string Item::getType(){
+QString Item::getName(){
 
 }

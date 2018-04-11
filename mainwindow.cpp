@@ -57,12 +57,15 @@ void MainWindow::setSounds(){
 
     bell = new QMediaPlayer();
     bell->setMedia(QUrl("qrc:/sounds/bell.mp3"));
+
+    cough = new QMediaPlayer();
+    cough->setMedia(QUrl("qrc:/sounds/cough.mp3"));
 }
 
 void MainWindow::makeTimer(){
-    //this->ui->healthBar->setTextVisible(false);
+    this->ui->healthBar->setTextVisible(false);
     this->ui->healthBar->setValue(100);
-    QTimer *timer = new QTimer(this);
+    timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(TimerEvent()));
     timer->start(1000);
 }
@@ -72,8 +75,7 @@ void MainWindow::TimerEvent(){
   Marks aValue(value);
   aValue--;
   value = aValue.val;
-  this->ui->healthBar->setValue(value);//ony decreases by 1% at the minute
-  //maybe put destructor in here??
+  this->ui->healthBar->setValue(value);
 
   if(value == 0){
       ui->stackedWidget->setCurrentIndex(1);
@@ -82,12 +84,12 @@ void MainWindow::TimerEvent(){
 
 void MainWindow::on_pickAxeBtn_clicked()
 {
-    this->ui->inventory->setText(axe.getName());
+    this->ui->invBox->addItem(axe.getName());
 }
 
 void MainWindow::on_pickExting_clicked()
 {
-    this->ui->inventory2->setText(extinguisher.getName());
+    this->ui->invBox->addItem(extinguisher.getName());
 }
 
 void MainWindow::on_windowBtn_clicked(){
@@ -143,8 +145,10 @@ void MainWindow::on_downBtn_clicked(){
 
 void MainWindow::on_goBtn_clicked(){
     if(levelCount < 6){
-        ui->stackedWidget->setCurrentIndex(1);
-        ui->windowDeathLabel->setText("Elevator filled with smoke \n\tYou Died");
+        ui->stackedWidget->setCurrentIndex(10);
+        timer->stop();
+        this->ui->healthBar->setValue(0);
+        cough->play();
     }
     else{
         ui->stackedWidget->setCurrentIndex(4);
@@ -153,9 +157,13 @@ void MainWindow::on_goBtn_clicked(){
 
 void MainWindow::on_downStairsBtn_clicked(){
     ui->stackedWidget->setCurrentIndex(7);
+    ui->pushButton->setVisible(false);
     this->value=0;
     ui->progressBar->setValue(value);
     ui->goBtn_2->setEnabled(false);
+    if(ui->invBox->findText(extinguisher.getName()) != -1){
+        ui->pushButton->setVisible(true);
+    }
 }
 
 void MainWindow::on_leftBtn_clicked(){
@@ -200,4 +208,5 @@ void MainWindow::on_pushButton_5_clicked(){
 
 void MainWindow::on_pushButton_3_clicked(){
     ui->stackedWidget->setCurrentIndex(9);
+    timer->stop();
 }

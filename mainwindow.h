@@ -26,6 +26,7 @@ public:
     ~MainWindow();
     Axe axe;
     Extinguisher extinguisher;
+    QTimer *timer;
     void makeTimer();
     void setSounds();
 
@@ -34,6 +35,7 @@ private:
     QMediaPlayer *breakWindow;
     QMediaPlayer *falling;
     QMediaPlayer *bell;
+    QMediaPlayer *cough;
     int levelCount;
     int value;
     QGraphicsScene scene;
