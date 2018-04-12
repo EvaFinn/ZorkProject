@@ -182,6 +182,7 @@ void MainWindow::on_restart_clicked(){
     ui->label->setVisible(true);
     ui->label_2->setVisible(false);
     ui->invBox->clear();
+    ui->invBox->addItem("Inventory");
     timer->start();
 }
 
@@ -286,6 +287,7 @@ void MainWindow::on_pushButton_6_clicked(){
     ui->label->setVisible(true);
     ui->label_2->setVisible(false);
     ui->invBox->clear();
+    ui->invBox->addItem("Inventory");
     timer->start();
 }
 
@@ -299,5 +301,6 @@ void MainWindow::on_pushButton_8_clicked(){
     ui->label->setVisible(true);
     ui->label_2->setVisible(false);
     ui->invBox->clear();
+    ui->invBox->addItem("Inventory");
     timer->start();
 }
