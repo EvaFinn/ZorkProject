@@ -38,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Escape!");
     ui->stackedWidget->setCurrentIndex(0);
     ui->label_2->setVisible(false);
 
