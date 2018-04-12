@@ -5,6 +5,7 @@
         <file>bell.mp3</file>
         <file>cough.mp3</file>
         <file>firesound.mp3</file>
+        <file>winSound.mp3</file>
     </qresource>
     <qresource prefix="/images">
         <file>closed_elevator.png</file>
@@ -21,5 +22,7 @@
         <file>stairwellwindow.jpg</file>
         <file>lockDoor.jpg</file>
         <file>lockedDoor.jpg</file>
+        <file>firestair.png</file>
+        <file>stairaxe.png</file>
     </qresource>
 </RCC>

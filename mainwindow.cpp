@@ -39,11 +39,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
-
+    ui->label_2->setVisible(false);
 
     setSounds();
     makeTimer();
-
     fire->play();
 }
 
@@ -60,7 +59,7 @@ MainWindow::~MainWindow(){
 void MainWindow::setSounds(){
     ui->volumeSlider->setRange(0, 100);
     ui->volumeSlider->setFixedWidth(100);
-    ui->volumeSlider->setValue(50);
+    ui->volumeSlider->setValue(100);
     fire = new QMediaPlayer();
     fire->setMedia(QUrl("qrc:/sounds/firesound.mp3"));
 
@@ -78,6 +77,9 @@ void MainWindow::setSounds(){
 
     cough = new QMediaPlayer();
     cough->setMedia(QUrl("qrc:/sounds/cough.mp3"));
+
+    win = new QMediaPlayer();
+    win->setMedia(QUrl("qrc:/sounds/winSound.mp3"));
 }
 
 int MainWindow::volume() const{
@@ -99,7 +101,6 @@ void MainWindow::on_checkBox_toggled(bool checked){
     else{
         fire->setVolume(100);
     }
-
 }
 
 void MainWindow::makeTimer(){
@@ -154,9 +155,11 @@ void MainWindow::on_stairsBtn_clicked(){
     if(ui->invBox->findText(axe.getName()) != -1){
         ui->stackedWidget->setCurrentIndex(8);
         ui->pickAxeBtn->setVisible(false);
+        ui->label_9->setVisible(false);
     }
     else{
-        ui->label->setText("Stair door is blocked, try find something to clear it with");
+        ui->label->setVisible(false);
+        ui->label_2->setVisible(true);
     }
 }
 
@@ -175,6 +178,9 @@ void MainWindow::on_enterLiftBtn_clicked(){
 void MainWindow::on_restart_clicked(){
     ui->stackedWidget->setCurrentIndex(0);
     this->ui->healthBar->setValue(100);
+    ui->label->setVisible(true);
+    ui->label_2->setVisible(false);
+    ui->invBox->clear();
     timer->start();
 }
 
@@ -215,13 +221,16 @@ void MainWindow::on_goBtn_clicked(){
 
 void MainWindow::on_downStairsBtn_clicked(){
     ui->stackedWidget->setCurrentIndex(7);
-    ui->pushButton->setVisible(false);
+    this->ui->exLabel->setVisible(true);
+    this->ui->pushButton->setVisible(false);
     this->value=0;
     ui->progressBar->setValue(value);
     ui->goBtn_2->setEnabled(false);
     if(ui->invBox->findText(extinguisher.getName()) != -1){
-        ui->pushButton->setVisible(true);
+        this->ui->pushButton->setVisible(true);
+        this->ui->exLabel->setVisible(false);
     }
+    ui->progressBar->setTextVisible(false);
 }
 
 void MainWindow::on_leftBtn_clicked(){
@@ -267,15 +276,27 @@ void MainWindow::on_pushButton_5_clicked(){
 void MainWindow::on_pushButton_3_clicked(){
     ui->stackedWidget->setCurrentIndex(9);
     timer->stop();
+    win->play();
 }
 
 void MainWindow::on_pushButton_6_clicked(){
     ui->stackedWidget->setCurrentIndex(0);
     this->ui->healthBar->setValue(100);
+    ui->label->setVisible(true);
+    ui->label_2->setVisible(false);
+    ui->invBox->clear();
     timer->start();
 }
 
-void MainWindow::on_pushButton_7_clicked()
-{
+void MainWindow::on_pushButton_7_clicked(){
     ui->stackedWidget->setCurrentIndex(3);
+}
+
+void MainWindow::on_pushButton_8_clicked(){
+    ui->stackedWidget->setCurrentIndex(0);
+    this->ui->healthBar->setValue(100);
+    ui->label->setVisible(true);
+    ui->label_2->setVisible(false);
+    ui->invBox->clear();
+    timer->start();
 }

@@ -39,6 +39,7 @@ private:
     QMediaPlayer *bell;
     QMediaPlayer *cough;
     QMediaPlayer *fire;
+    QMediaPlayer *win;
     int levelCount;
     int value;
     QGraphicsScene scene;
@@ -71,6 +72,7 @@ private slots:
     void on_pushButton_6_clicked();
     void on_pushButton_7_clicked();
     void on_checkBox_toggled(bool checked);
+    void on_pushButton_8_clicked();
 };
 
 #endif // MAINWINDOW_H
